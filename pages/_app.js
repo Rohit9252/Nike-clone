@@ -1,5 +1,7 @@
 import '@/styles/globals.css';
+import Header from '@/components/Header';
 import Head from 'next/head';
+import Footer from '@/components/Footer';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -21,7 +23,9 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
+      <Header />
       <Component {...pageProps} />
+      <Footer />
     </>
 
 

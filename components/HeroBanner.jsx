@@ -6,7 +6,7 @@ import { BiArrowBack } from "react-icons/bi";
 
 export const HeroBanner = () => {
     return (
-        <div className="relative text-white text-[20px] w-[1100px] max-w-[1360px] mx-auto">
+        <div className="relative text-white text-[20px] w-full max-w-[1360px] mx-auto">
             <Carousel
                 autoPlay={true}
                 infiniteLoop={true}

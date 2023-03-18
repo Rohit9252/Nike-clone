@@ -25,9 +25,9 @@ const Header = () => {
 
         if (window.scrollY > 200) {
 
-            if(window.scrollY > lastScrollY && !mobileMenu) {
+            if (window.scrollY > lastScrollY && !mobileMenu) {
                 setShow("-translate-y-[80px]");
-            }else{
+            } else {
                 setShow("shadow-sm")
             }
         } else {
@@ -35,13 +35,13 @@ const Header = () => {
         }
 
         setLastScrollY(window.scrollY);
-      
+
 
     }
 
 
     useEffect(() => {
-        window.addEventListener("scroll",  controlNavbar);
+        window.addEventListener("scroll", controlNavbar);
         return () => {
             window.removeEventListener("scroll", controlNavbar);
         }
@@ -63,7 +63,7 @@ const Header = () => {
                     setShowCatMenu={setShowCatMenu}
                 />
 
-             {  mobileMenu && <MenuMobile
+                {mobileMenu && <MenuMobile
                     showCatMenu={showCatMenu}
                     setShowCatMenu={setShowCatMenu}
                     setMobileMenu={setMobileMenu}
@@ -84,18 +84,21 @@ const Header = () => {
 
 
                     {/* Icon Start */}
-                    <div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center 
+                    <Link href="/cart">
+
+                        <div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center 
                      items-center hover:bg-black/[0.05] cursor-pointer relative'>
-                        <BsCart className='text-[15px] md:text-[20px]' />
-                        <div className='h-[14px] md:h-[18px] min-w-[14px] 
+                            <BsCart className='text-[15px] md:text-[20px]' />
+                            <div className='h-[14px] md:h-[18px] min-w-[14px] 
                         md:min-w-[18px] rounded-full bg-red-600 absolute 
                         top-1 left-5 md:left-7 text-white text-[10px] 
                         md:text-[12px] flex justify-center items-center px-[2px] md:px-[5px]'
-                        >5</div>
-                    </div>
+                            >5</div>
+                        </div>
+                    </Link>
                     {/* Icon finsh */}
 
-                    <div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center 
+                    <div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center 
                      items-center hover:bg-black/[0.05] cursor-pointer relative -mr-2'>
                         {mobileMenu ? (
                             <VscChromeClose className='text-[15px]' onClick={() => setMobileMenu(false)} />

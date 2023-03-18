@@ -5,7 +5,11 @@ import { IoMdHeartEmpty } from 'react-icons/io';
 
 const ProductDetails = () => {
   return (
-    <div>ProductPage</div>
+    <div>
+
+
+
+    </div>
   )
 }
 

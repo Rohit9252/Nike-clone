@@ -17,7 +17,7 @@ const subMenuData = [
     { id: 4, name: "Football shoes", doc_count: 107 },
 ];
 
-const MenuMobile = ({ showCatMenu, setShowCatMenu, setMobileMenu }) => {
+const MenuMobile = ({ showCatMenu, setShowCatMenu, setMobileMenu, categories }) => {
     return (
         <ul className='flex flex-col md:hidden font-bold absolute top-[50px] left-0 w-full 
           h-[calc(100vh-50px)] bg-white border-t'>
@@ -39,10 +39,10 @@ const MenuMobile = ({ showCatMenu, setShowCatMenu, setMobileMenu }) => {
                                        
                                         {
                                             showCatMenu && (
-                                                <ulc className="bg-black/[0.05] -mx-5 mt-4 -md-4">
-                                                    {subMenuData.map((subItem) => {
+                                                <ul className="bg-black/[0.05] -mx-5 mt-4 -md-4">
+                                                    {categories?.map(({attributes:c,id}) => {
                                                         return (
-                                                            <Link key={subItem.id} href="/" 
+                                                            <Link key={id} href={`/category/${c.slug}`} 
                                                             onClick={() => 
                                                                 {
                                                                     setShowCatMenu(false) 
@@ -51,13 +51,15 @@ const MenuMobile = ({ showCatMenu, setShowCatMenu, setMobileMenu }) => {
                                                             
                                                             >
                                                                 <li className='py-4 px-8 border-t flex justify-between'>
-                                                                    {subItem.name}
-                                                                    <span className='opacity-50 text-sm'>78</span>
+                                                                    {c.name}
+                                                                    <span className='opacity-50 text-sm'>
+                                                                        {`(${c.products.data.length})`}
+                                                                        </span>
                                                                 </li>
                                                             </Link>
                                                         )
                                                     })}
-                                                </ulc>
+                                                </ul>
                                             )
                                         }
 

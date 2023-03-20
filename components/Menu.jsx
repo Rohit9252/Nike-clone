@@ -17,7 +17,7 @@ const subMenuData = [
     { id: 4, name: "Football shoes", doc_count: 107 },
 ];
 
-const Menu = ({ showCatMenu, setShowCatMenu }) => {
+const Menu = ({ showCatMenu, setShowCatMenu, categories }) => {
     return (
         <ul className='hidden md:flex items-center
          gap-8 font-medium text-black'>
@@ -38,14 +38,19 @@ const Menu = ({ showCatMenu, setShowCatMenu }) => {
                                             showCatMenu && (
                                                 <ulc className="bg-white absolute top-6 
                                                 left-0 min-w-[250px] px-1 py-1 text-black shadow-lg">
-                                                    {subMenuData.map((subItem) => {
+                                                    {categories.map(({ attributes: c, id }) => {
                                                         return (
-                                                            <Link key={subItem.id} href="/" onClick={() => setShowCatMenu(false)}>
+                                                            <Link
+                                                                key={id}
+                                                                href={`/category/${c.slug}`}
+                                                                onClick={() => setShowCatMenu(false)}>
                                                                 <li className='h-12 flex items-center 
                                                                 justify-between px-3 hover:bg-black/[0.03] 
                                                                 rounded-md cursor-pointer'>
-                                                                    {subItem.name}
-                                                                    <span className='opacity-50 text-sm'>78</span>
+                                                                    {c.name}
+                                                                    <span className='opacity-50 text-sm'>
+                                                                        {`(${c.products.data.length})`}
+                                                                    </span>
                                                                 </li>
                                                             </Link>
                                                         )

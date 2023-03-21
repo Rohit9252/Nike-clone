@@ -1,6 +1,7 @@
 import ProductdetailsCarousel from '@/components/ProductdetailsCarousel';
 import RelatedProducts from '@/components/RelatedProducts';
 import Wrapper from '@/components/Wrapper';
+import { addToCart } from '@/store/cartSlice';
 import { fetchDataFromApi } from '@/utils/api';
 import { getDiscountedPricePercentage } from '@/utils/helper';
 import React, { useState } from 'react';
@@ -20,7 +21,25 @@ const ProductDetails = ({ product, products }) => {
     const [selectedSize, setSelectedSize] = useState();
     const [showError, setShowError] = useState(false);
 
+    const dispatch = useDispatch();
+
     const p = product?.data?.[0]?.attributes;
+
+
+
+    const notify = () => {
+        toast.success("Success. Check your cart!", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    };
+
 
     return (
         <div className="w-full md:py-20">
@@ -43,7 +62,7 @@ const ProductDetails = ({ product, products }) => {
 
                     <div className="flex-[1] py-3">
 
-                        <div className="text-[34px] font-semibold mb-2">
+                        <div className="text-[34px] font-semibold mb-2 leading-tight">
                             {p.name}
                         </div>
 
@@ -129,6 +148,8 @@ const ProductDetails = ({ product, products }) => {
                              text-white text-lg font-medium transition-transform 
                              active:scale-95 mb-3 hover:opacity-75"
                             onClick={() => {
+
+
                                 if (!selectedSize) {
                                     setShowError(true);
                                     document.getElementById("sizeGrid").scrollIntoView(
@@ -138,6 +159,23 @@ const ProductDetails = ({ product, products }) => {
                                         }
                                     );
                                 }
+                                else {
+                                    dispatch(addToCart({
+                                        ...product?.data?.[0],
+                                        size: selectedSize,
+                                        oneQuantityPrice: p.price,
+                                    }));
+                                    toast.success("Success. Check your cart!", {
+                                        position: "bottom-right",
+                                        autoClose: 5000,
+                                        hideProgressBar: false,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                        theme: "dark",
+                                    });
+                                }
                             }}
                         >
                             Add to Cart
@@ -146,7 +184,23 @@ const ProductDetails = ({ product, products }) => {
                         <button className="w-full py-4 rounded-full border
                          border-black text-lg font-medium transition-transform 
                          active:scale-95 flex items-center justify-center gap-2 
-                         hover:opacity-75 mb-10">
+                         hover:opacity-75 mb-10"
+                            onClick={()=>{
+                                console.log("clicked")
+                                notify();
+                                toast.success("Success. Check your cart!", {
+                                    position: "bottom-right",
+                                    autoClose: 5000,
+                                    hideProgressBar: false,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                    theme: "dark",
+                                });
+                            }}
+                         
+                         >
                             Whishlist
                             <IoMdHeartEmpty size={20} />
                         </button>
@@ -161,14 +215,6 @@ const ProductDetails = ({ product, products }) => {
                                     {p.description}
                                 </ReactMarkdown>
                             </div>
-                            {/* <div className='text-md mb-5'>
-                                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                            </div> */}
-
                         </div>
 
                     </div>

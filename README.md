@@ -1,6 +1,9 @@
  # Nike Shoe Clone Website
   This is a clone website of Nike shoe store built using Next.js, a React-based web framework.
   
+  
+  ![](https://github.com/Rohit9252/Rohit9252/blob/main/Untitled-1.jpg)
+  
   # Getting Started
     Prerequisites
     Node.js (version 14 or later)

@@ -36,7 +36,7 @@
      * Next.js
      * React.js
      * Redux
-     * MongoDB
+     * PostgresSQL
      * Express.js
      * Stripe (for payment processing)
   

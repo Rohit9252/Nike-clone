@@ -24,6 +24,7 @@
      To start the application, run the following command: 
      
      npm run dev
+     npm run build
     
   # Features
    * Browse and search for Nike shoes

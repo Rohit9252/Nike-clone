@@ -24,6 +24,7 @@
      To start the application, run the following command: 
      
      npm run dev
+     npm run build
     
   # Features
    * Browse and search for Nike shoes
@@ -38,7 +39,7 @@
      * Redux
      * PostgresSQL
      * Express.js
-     * Stripe (for payment processing)
+     * Stripe (for payment processing...)
   
    # Contributing
 Contributions are always welcome! If you want to contribute to this project, please fork the repository and submit a pull request.
